@@ -19,14 +19,36 @@ function Chat() {
         }
 
         db.collection("rooms")
-        .doc(roomId)
+        .doc("nCQo1jZhzgg6ezkiBLk7")
         .collection('messages')
-        .orderBy('timestamp')
-        .onSnapshot((snapshot) => setRoomMessages(snapshot.docs.map((doc) => doc.data())))
+        .doc("bCvIgA7wwRwFOW0qmxkj")
+        // .get()
+        // .then(snapshot => {
+        //     snapshot.docs.forEach(doc => {
+        //         console.log(doc.data)
+        //     })
+        //     // const values = snapshot.docs.map(doc)
+        // })
+        // .orderBy('timestamp')
+        .onSnapshot((snapshot) => {
+            console.log(snapshot.data())
+        })
+        // .onSnapshot((snapshot) => setRoomMessages(snapshot.docs.map((doc) => doc.data())))
+
+
+        // .onSnapshot((snapshot) => {
+        //     console.log(snapshot.docs.map((doc) => doc.data()))
+        // })
+
+// (async () => {
+//     const mssgs = await db.doc(`rooms/${roomId}`).collection('messages').get()
+//     console.log(mssgs.docs)
+// })();
+
+// console.log(roomMessages);
+
       },[roomId]);
     
-    console.log(roomDetails);
-    console.log( "Messages", roomMessages);
     
     return (
         <div className="chat">
